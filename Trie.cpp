@@ -43,19 +43,27 @@ bool search(string s)
     return cur->ifend;
 }
 
-void autocomp(string s)
+int autocomp(string s,int co)
 {
-    string st;int co=3;
+    if(co==0) return 0;
+    string st;
     struct trie *cur=root;
     for(char c:s)
     {
         int index=c-'a';
-        if(cur->child[index]==NULL) {cout<<"No match"<<endl;return;}
+        if(cur->child[index]==NULL) {return co;}
         cur=cur->child[index];
     }
     if(cur->ifend) {cout<<s<<endl;co--;}
     
+    char ch;
+    for(int i=0;i<26;i++)
+    {
+        if(cur->child[i]) {ch='a'+i;co=autocomp(s+ch,co);}
+        if(co==0) return 0;
+    }
     
+    return co;
 }
 
 
@@ -76,10 +84,12 @@ int main()
         else cout<<"NO"<<endl;
     }
     cin>>n; //How many to autocomplete upto 3 words
+    int co;
+    cin>>co; //How many autocomplete suggestion maximum to give
     while(n--) 
     {
         cin>>s;
-        autocomp(s);
+        if(autocomp(s,co)==3) cout<<"No Match"<<endl;
     }
     
     
