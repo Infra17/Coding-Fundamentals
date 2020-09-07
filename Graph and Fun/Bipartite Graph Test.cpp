@@ -31,7 +31,7 @@ int main()
   {cin>>a>>b;arr[a-1].push_back(b-1);arr[b-1].push_back(a-1);}
   for(int i=0;i<v;i++)
   if(visit[v]==0)
-  flag &= dfsbipart(1,1);
+  flag &= dfsbipart(v,1);
   
   if(flag)cout<<"Yes";
   else cout<<"No";
