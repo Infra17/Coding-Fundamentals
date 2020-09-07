@@ -30,8 +30,8 @@ int main()
   for(int i=0;i<e;i++)
   {cin>>a>>b;arr[a-1].push_back(b-1);arr[b-1].push_back(a-1);}
   for(int i=0;i<v;i++)
-  if(visit[v]==0)
-  flag &= dfsbipart(v,1);
+  if(visit[i]==0)
+  flag &= dfsbipart(i,1);
   
   if(flag)cout<<"Yes";
   else cout<<"No";
