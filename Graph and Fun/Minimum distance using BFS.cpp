@@ -1,4 +1,5 @@
 //Minimum distance using BFS from 1st to last node
+//Unweighted graph
 //Non Recursive
 //Author : Infra
 
